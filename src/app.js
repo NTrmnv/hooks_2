@@ -8,6 +8,7 @@ function App() {
   const [data, setData] = useState({ hits: [] });
   const [recorded, setRecorded] = useState(true);
   
+  //fetching data and adding to localStorage
   const fetchData = async () => {
     const result = await axios(
       'https://hn.algolia.com/api/v1/search?query=redux',
