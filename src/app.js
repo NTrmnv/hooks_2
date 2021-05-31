@@ -6,21 +6,21 @@ import axios from 'axios';
  
 function App() {
   const [data, setData] = useState({ hits: [] });
-  const [recorded, setRecorded] = useState(true);
+  const [recorded, setRecorded] = useState(false);
   
   //fetching data and adding to localStorage
   const fetchData = async () => {
-    const result = await axios(
-      'https://hn.algolia.com/api/v1/search?query=redux',
-    );
+    const result = await axios('https://hn.algolia.com/api/v1/search?query=redux');
     setData(result.data);
-    localStorage.setItem('Data', JSON.stringify(result.data));
+    setRecorded(true);
+    localStorage.setItem('Data', JSON.stringify(result.data));  
   };
-
 
   useEffect(() => {
     fetchData();
-  });
+    if(recorded)
+       console.log(localStorage.getItem('Data'));
+  },[recorded]);
  
   return (
     <ul>
