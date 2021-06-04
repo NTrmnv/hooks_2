@@ -20,7 +20,6 @@ function Data () {
 
   useEffect(() => {
     fetchData();
-    console.log(1);
   }, []);
 
   useEffect(() => {
